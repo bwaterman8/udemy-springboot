@@ -1,4 +1,4 @@
-package com.springframework.springwebapp;
+package com.springframework.springwebapp.Model;
 
 public class Book {
     private String title;

@@ -25,11 +25,12 @@ public class BootStrapData implements CommandLineRunner {
     public void run(String... args) throws Exception {
         Author jrr = new Author("JRR", "Tolkein");
         Book fellowship = new Book("Fellowship of the Ring", "1234");
-        Publisher randy = new Publisher("Randy's Books", "23 Book rd, Columbus, Ohio");
+        Publisher randy = new Publisher();
+        randy.setName("Randy's Books");
+        randy.setAddress("23 fantasy dr. Columbus, Oh");
 
         jrr.getBooks().add(fellowship);
         fellowship.getAuthors().add(jrr);
-        randy.getBooks().add(fellowship);
 
         authorRepository.save(jrr);
         bookRepository.save(fellowship);
@@ -38,11 +39,12 @@ public class BootStrapData implements CommandLineRunner {
 
         Author jk = new Author("JK", "Rowling");
         Book sorcerer = new Book("Sorcerer's Stone", "4321");
-        Publisher magic = new Publisher("Magical Books", "444 Wiz ln, Witchy, Liverpool");
+        Publisher magic = new Publisher();
+        magic.setName("Magical Books");
+        magic.setAddress("444 Wiz ln, Witchy, Liverpool");
 
         jk.getBooks().add(sorcerer);
         sorcerer.getAuthors().add(jk);
-        magic.getBooks().add(sorcerer);
 
         authorRepository.save(jk);
         bookRepository.save(sorcerer);

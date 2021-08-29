@@ -2,6 +2,7 @@ package com.springframework.springwebapp.Bootstrap;
 
 import com.springframework.springwebapp.Model.Author;
 import com.springframework.springwebapp.Model.Book;
+import com.springframework.springwebapp.Model.Publisher;
 import com.springframework.springwebapp.Repositories.AuthorRepository;
 import com.springframework.springwebapp.Repositories.BookRepository;
 import org.springframework.boot.CommandLineRunner;
@@ -21,12 +22,24 @@ public class BootStrapData implements CommandLineRunner {
     public void run(String... args) throws Exception {
         Author jrr = new Author("JRR", "Tolkein");
         Book fellowship = new Book("Fellowship of the Ring", "1234");
+        Publisher randy = new Publisher("Randy's Books", "23 Book rd, Columbus, Ohio");
 
         jrr.getBooks().add(fellowship);
         fellowship.getAuthors().add(jrr);
+        randy.getBooks().add(fellowship);
 
         authorRepository.save(jrr);
         bookRepository.save(fellowship);
+        publisherRepository
+
+        Author jk = new Author("JK", "Rowling");
+        Book sorcerer = new Book("Sorcerer's Stone", "4321");
+
+        jk.getBooks().add(sorcerer);
+        sorcerer.getAuthors().add(jk);
+
+        authorRepository.save(jk);
+        bookRepository.save(sorcerer);
 
         System.out.println("Started in SpringBoot");
         System.out.println("number of book: " + bookRepository.count());

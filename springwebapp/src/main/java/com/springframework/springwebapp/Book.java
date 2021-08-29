@@ -1,20 +1,20 @@
 package com.springframework.springwebapp;
 
 public class Book {
-    private String name;
+    private String title;
     private String isbn;
 
-    public Book(String name, String isbn) {
-        this.name = name;
+    public Book(String title, String isbn) {
+        this.title = title;
         this.isbn = isbn;
     }
 
-    public String getName() {
-        return name;
+    public String getTitle() {
+        return title;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getIsbn() {

@@ -28,30 +28,35 @@ public class BootStrapData implements CommandLineRunner {
         Publisher randy = new Publisher();
         randy.setName("Randy's Books");
         randy.setAddress("23 fantasy dr. Columbus, Oh");
+        publisherRepository.save(randy);
 
         jrr.getBooks().add(fellowship);
         fellowship.getAuthors().add(jrr);
+        fellowship.setPublisher(randy);
+        randy.getBooks().add(fellowship);
 
         authorRepository.save(jrr);
         bookRepository.save(fellowship);
         publisherRepository.save(randy);
 
 
+
         Author jk = new Author("JK", "Rowling");
         Book sorcerer = new Book("Sorcerer's Stone", "4321");
-        Publisher magic = new Publisher();
-        magic.setName("Magical Books");
-        magic.setAddress("444 Wiz ln, Witchy, Liverpool");
 
         jk.getBooks().add(sorcerer);
         sorcerer.getAuthors().add(jk);
+        sorcerer.setPublisher(randy);
+        randy.getBooks().add(sorcerer);
 
         authorRepository.save(jk);
         bookRepository.save(sorcerer);
-        publisherRepository.save(magic);
+        publisherRepository.save(randy);
+
 
         System.out.println("Started in SpringBoot");
         System.out.println("number of book: " + bookRepository.count());
         System.out.println("number of publishers: " + publisherRepository.count());
+        System.out.println("publisher number of books: " + randy.getBooks().size());
     }
 }
